@@ -3,7 +3,7 @@ This is a repository presenting the outcome of my thesis for MSc. Voice Technolo
 
 
 #### Repo Structure:
-- <sup>1</sup>dataset 
+i- <sup>1</sup>dataset 
 	- speaker_independent: containing data for the speaker-independent experiments
 		- pp{PATIENT ID}
 			- .wav
@@ -109,7 +109,6 @@ from typing import Optional, Any
 ```
 pip install -r requirements.txt
 ```
-
 ## Evaluation
 First, move to the scripts directory.
 ```
@@ -134,5 +133,5 @@ File content
 ```
 
 ## License
-The fine-tuned models are MIT-licenced. For data usage, you have to obey the restrictions imposed by the provider. To summarize, it is NOT allowed to identify and recognize the speakers from the dataset. For more details, please visit [here](https://www.esat.kuleuven.be/psi/spraak/downloads/).
+The fiine-tuned models are MIT-licenced. For data usage, you have to obey the restrictions imposed by the provider. To summarize, it is NOT allowed to identify and recognize the speakers from the dataset. For more details, please visit [here](https://www.esat.kuleuven.be/psi/spraak/downloads/).
 
