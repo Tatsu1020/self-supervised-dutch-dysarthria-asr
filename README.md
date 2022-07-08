@@ -3,15 +3,20 @@ This is a repository presenting the outcome of my thesis for MSc. Voice Technolo
 
 
 #### Repo Structure:
-i- <sup>1</sup>dataset 
+- <sup>1</sup>dataset 
 	- speaker_independent: containing data for the speaker-independent experiments
 		- pp{PATIENT ID}
 			- .wav
 			- <sup>2</sup>test.trans.txt
 	- speaker_dependent: containing data for the speaker-dependent experiments
-		- pp{PATIENT ID}
-			- .wav
-			- test.trans.txt
+		- target: data from target speakers
+			- pp{PATIENT ID}
+				- .wav
+				- test.trans.txt
+		- dummy: data from dummy speakers
+			- pp{PATIENT ID}
+				- .wav
+				- test.trans.txt
 	- dictionary
 		- dict.ltr.txt
 		- <sup>3</sup>control.dict.ltr.txt
@@ -31,12 +36,9 @@ i- <sup>1</sup>dataset
 - scripts
 	- `inference.py`: main script for the evaluation
 
-<sup>1</sup>The data is extracted from the [Domotica database](https://www.esat.kuleuven.be/psi/spraak/downloads/).
-
-<sup>2</sup>This is a file containing transcriptions corresponding to each audio file.
-
+<sup>1</sup>The data is extracted from the [Domotica database](https://www.esat.kuleuven.be/psi/spraak/downloads/).\
+<sup>2</sup>This is a file containing transcriptions corresponding to each audio file.\
 <sup>3</sup>This is a dictionary for the models fine-tuned with control speakers. It can be the same as the one for the models fine-tuned without control speakers since appeared characters in the dataset are the same. However, the different ordered dictionary was used for the fine-tuning. Therefore, please use this to evaluate the models fine-tuned with control speakers.
-
 
 ## Requirements
 1. Please install [Fairseq library](https://github.com/facebookresearch/fairseq) beforehand. For the library installation, please follow the original repo instruction.
@@ -108,8 +110,10 @@ from typing import Optional, Any
 2. Please install the dependencies by executing the following command.
 ```
 pip install -r requirements.txt
+
 ```
 ## Evaluation
+Before starting the evaluation, make sure that you unzip the data.\
 First, move to the scripts directory.
 ```
 cd scripts
@@ -122,16 +126,34 @@ python inference_beam_search.py \\
 	--path_to_trans /PATH/TO/TRANSCRIPTION/FILE \\
 	--path_to_dict /PATH/TO/DICTIONARY/FILE \\
 	--out_dir /PATH/TO/OUTPUT/DIRECTORY/TO/SAVE/RESULTS \\
-	--out_name NAME_OF_THE_OUTPUT_FILE
+	--out_name NAME_OF_THE_OUTPUT_FILE \\
+	--beam_width 50
 ```
-
 Make sure to specify the correct dictionary file. For the evaluation of the speaker-independent models fine-tuned with control speakers, you need to use `control.dict.ltr.txt`. For others, you will use `dict.ltr.txt`.
 
-After the execution, you will obtain the output file `OUT_NAME_BEAM_WIDTH`, which contains each audio file name, true transcription, prediciton, and WER. The last row contains the total WER and CER. The file content looks like the below.
+After the execution, you will obtain the output file `OUT_NAME_BEAM_WIDTH`, which contains each audio file name, true transcription, prediciton, and WER. The last row contains the total WER. The file content looks like the below.
 ```
-File content
+SegmentNr_152.wav	 Label: ALADIN STAANDE LAMP OP TWEE	 Pred: ALADIN STANDSLAM OP TWEE	 WER: 0.14814814814814814
+SegmentNr_119.wav	 Label: ALADIN DEUR SLAAPKAMER DICHT	 Pred: ALADIN DEUR SLAAPKAMER DICHT	 WER: 0.0
+SegmentNr_20.wav	 Label: ALADIN LICHT UIT IN SLAAPKAMER	 Pred: ALADIN LICHT UIT IN SLAAPKAMER	 WER: 0.0
+SegmentNr_210.wav	 Label: ALADIN STAANDE LAMP OP TWEE	 Pred: ALADIN STAND LAM OP TWEE	 WER: 0.1111111111111111
+SegmentNr_150.wav	 Label: ALADIN LICHT UIT IN SLAAPKAMER	 Pred: ALADIN LICHT IT IN SLAAPKAMER	 WER: 0.03333333333333333
+⋮
+Total WER: 0.15172580879651584 
+
 ```
+The evaluation might take up to 10 minutes depending on the environment.
+
+## Results of the Speaker-Dependent ASR
+Below is the results of the speaker-dependent ASR for Dutch dysarthric speech. The table presents WER for patients in different severity groups.
+
+| Model | Mild: pp17 | Moderate: pp28 | High: pp41 |
+|-------|------|-----------|------|
+| XLSR-53 | 10.79 |  15.17  | 17.36 |
+
+For more results of other experiments, please refer to the paper. 
 
 ## License
-The fiine-tuned models are MIT-licenced. For data usage, you have to obey the restrictions imposed by the provider. To summarize, it is NOT allowed to identify and recognize the speakers from the dataset. For more details, please visit [here](https://www.esat.kuleuven.be/psi/spraak/downloads/).
+The fine-tuned models are MIT-licenced. For data usage, you have to obey the restrictions imposed by the provider. To summarize, it is NOT allowed to make the speakers identifiable and recognizable by derived creations. For more details, please visit [here](https://www.esat.kuleuven.be/psi/spraak/downloads/).
+
 

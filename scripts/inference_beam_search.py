@@ -1,6 +1,5 @@
 import torch
 import torchaudio
-#from torchaudio.models.decoder import ctc_decoder
 import argparse
 import fairseq
 import argparse
@@ -10,9 +9,7 @@ import librosa
 import numpy as np
 from itertools import groupby
 import re
-from torchmetrics import CharErrorRate
 from pyctcdecode import build_ctcdecoder
-#from ctc_decoder import beam_search
    
 def main():
 
@@ -77,11 +74,9 @@ def main():
             results.append([audio_name + '\t', f'Label: {actual_transcript}' + '\t', f'Pred: {beam_trans}' + '\t', f'WER: {str(beam_wer)}'])
 
         wer = str(wer / len(true))
-        metric_cer = CharErrorRate()
-        cer = str(metric_cer(preds, true))         
         print(f"WER:{wer}")
 
-        results.append([f"Total WER: {wer}", f"Total CER: {cer}"])
+        results.append([f"Total WER: {wer}"])
 
         name = args.out_name + "_" + str(args.beam_width) + ".txt"
 
