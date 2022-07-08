@@ -1,7 +1,6 @@
 # ASR for Dutch Dysarthric Speech
 This is a repository presenting the outcome of my thesis for MSc. Voice Technology at the University of Groningen. **The thesis developed the Dutch dysarthric speech recognition with self-supervised learning (SSL) models, wav2vec 2.0 and XLSR-53.** To the best of the author's knowledge, this is the first attempt to apply SSL models to Dutch dysarthric speech recognition. The implementations are done using [Fariseq library](https://github.com/facebookresearch/fairseq). For more details of the research and experiments, please visit [the paper](xxx). With this repo, you can reproduce the evaluation experiment following the instructions below.
 
-
 #### Repo Structure:
 - <sup>1</sup>dataset 
 	- speaker_independent: containing data for the speaker-independent experiments
@@ -21,7 +20,7 @@ This is a repository presenting the outcome of my thesis for MSc. Voice Technolo
 		- dict.ltr.txt
 		- <sup>3</sup>control.dict.ltr.txt
 
-- models
+- <sup>4</sup>models
 	- fine-tuned: containing the models fine-tuned without control speakers
 		- base
 		- xlsr
@@ -36,9 +35,10 @@ This is a repository presenting the outcome of my thesis for MSc. Voice Technolo
 - scripts
 	- `inference.py`: main script for the evaluation
 
-<sup>1</sup>The data is extracted from the [Domotica database](https://www.esat.kuleuven.be/psi/spraak/downloads/).\
+<sup>1</sup>The data is extracted from the [Domotica database](https://www.esat.kuleuven.be/psi/spraak/downloads/). Download the evaluation dataset from [here](https://drive.google.com/file/d/1sTwuLjvZLWidG__cZbXhPXFztZd17SUr/view?usp=sharing). Please unzip it locally under the root of the repository.\
 <sup>2</sup>This is a file containing transcriptions corresponding to each audio file.\
-<sup>3</sup>This is a dictionary for the models fine-tuned with control speakers. It can be the same as the one for the models fine-tuned without control speakers since appeared characters in the dataset are the same. However, the different ordered dictionary was used for the fine-tuning. Therefore, please use this to evaluate the models fine-tuned with control speakers.
+<sup>3</sup>This is a dictionary for the models fine-tuned with control speakers. It can be the same as the one for the models fine-tuned without control speakers since appeared characters in the dataset are the same. However, the different ordered dictionary was used for the fine-tuning. Therefore, please use this to evaluate the models fine-tuned with control speakers.\
+<sup>4</sup>The models can be downloaded from [here](https://drive.google.com/file/d/13p8o2pmzeZTEaoTip6a0xxfgQoaoIWiI/view?usp=sharing). Please unzip it locally under the root of the repository.
 
 ## Requirements
 1. Please install [Fairseq library](https://github.com/facebookresearch/fairseq) beforehand. For the library installation, please follow the original repo instruction.
