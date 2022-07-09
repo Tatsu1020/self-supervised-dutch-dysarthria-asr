@@ -41,8 +41,8 @@ This is a repository presenting the outcome of my thesis for MSc. Voice Technolo
 <sup>4</sup>The models can be downloaded from [here](https://drive.google.com/file/d/13p8o2pmzeZTEaoTip6a0xxfgQoaoIWiI/view?usp=sharing). Please unzip it locally under the root of the repository.
 
 ## Requirements
-1. Please install [Fairseq library](https://github.com/facebookresearch/fairseq) beforehand. For the library installation, please follow the original repo instruction.
-Once you have installed the library, modify the file `\fairseq\fairseq\tasks\audio_pretraining.py` to avoid the error due to the parameters mismatch. Please add the following scripts to the file.
+1. Install [Fairseq library](https://github.com/facebookresearch/fairseq). For the library installation, follow the original repo instruction.
+Once you have installed the library, modify the file `\fairseq\fairseq\tasks\audio_pretraining.py` to avoid the error due to the parameters mismatch. Add the following scripts to the file.
 
 ```
 # copied from fine-tuning cfg
@@ -107,7 +107,7 @@ from typing import Optional, Any
     )
 ```
 
-2. Please install the dependencies by executing the following command.
+2. Install the dependencies by executing the following command.
 ```
 pip install -r requirements.txt
 
@@ -145,7 +145,7 @@ Total WER: 0.15172580879651584
 The evaluation might take up to 10 minutes depending on the environment.
 
 ## Results of the Speaker-Dependent ASR
-Below is the results of the speaker-dependent ASR for Dutch dysarthric speech. The table presents WER for patients in different severity groups.
+Below is the reisults of the speaker-dependent ASR for Dutch dysarthric speech. The table presents WER for patients in different severity groups.
 
 | Model | Mild: pp17 | Moderate: pp28 | High: pp41 |
 |-------|------|-----------|------|
