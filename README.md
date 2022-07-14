@@ -2,43 +2,65 @@
 This is a repository presenting the outcome of my thesis for MSc. Voice Technology at the University of Groningen. **The thesis developed the Dutch dysarthric speech recognition with self-supervised learning (SSL) models, wav2vec 2.0 and XLSR-53.** To the best of the author's knowledge, this is the first attempt to apply SSL models to Dutch dysarthric speech recognition. The implementations are done using [Fariseq library](https://github.com/facebookresearch/fairseq). For more details of the research and experiments, please visit [the paper](https://drive.google.com/file/d/13VkVk38DEhn8TQHVvql1Vhi-HzlmlV9O/view?usp=sharing). With this repo, you can reproduce the evaluation experiment following the instructions below.
 
 #### Repo Structure:
-- <sup>1</sup>dataset 
-	- speaker_independent: containing data for the speaker-independent experiments
-		- pp{PATIENT ID}
-			- .wav
-			- <sup>2</sup>test.trans.txt
-	- speaker_dependent: containing data for the speaker-dependent experiments
-		- target: data from target speakers
-			- pp{PATIENT ID}
-				- .wav
-				- test.trans.txt
-		- dummy: data from dummy speakers
-			- pp{PATIENT ID}
-				- .wav
-				- test.trans.txt
-	- dictionary
-		- dict.ltr.txt
-		- <sup>3</sup>control.dict.ltr.txt
 
-- <sup>4</sup>models
-	- fine-tuned: containing the models fine-tuned without control speakers
-		- base
-		- xlsr
-	- fine-tuned_control: containing the models fine-tuned with control speakers
-		- base
-		- xlsr
-	- speaker_dependent: containing the models re-fine-tuned with a target speaker's utterances
-		- pp17
-		- pp28
-		- pp41
+```
+dataset 
+|
+└───speaker_independent: containing data for the speaker-independent experiments
+|	|
+|	└───pp{PATIENT ID}
+|		|	.wav
+|		|	test.trans.txt    
+|	
+└───speaker_dependent: containing data for the speaker-dependent experiments
+|	| 
+|	└───target: data from target speakers
+|	|	|
+|	|	└───pp{PATIENT ID}
+|	|		|	.wav
+|	|		|	test.trans.txt
+|	|
+|	└───dummy: data from dummy speakers
+|		|
+|		└───pp{PATIENT ID}
+|			|	.wav
+|			|	test.trans.txt
+|
+└───dictionary
+	|	dict.ltr.txt
+	|	control.dict.ltr.txt
 
-- scripts
-	- `inference.py`: main script for the evaluation
+models
+|
+└───fine-tuned: containing the models fine-tuned without control speakers
+|	|
+|	└───base
+|	|
+|	└───xlsr
+|
+└───fine-tuned_control: containing the models fine-tuned with control speakers
+|	|
+|	└───base
+|	|
+|	└───xlsr
+|
+└───speaker_dependent: containing the models re-fine-tuned with a target speaker's utterances
+	|
+	└───pp17
+	|
+	└───pp28
+	|
+	└───pp41
 
-<sup>1</sup>The data is extracted from the [Domotica database](https://www.esat.kuleuven.be/psi/spraak/downloads/). Download the evaluation dataset from [here](https://drive.google.com/file/d/1sTwuLjvZLWidG__cZbXhPXFztZd17SUr/view?usp=sharing). Please unzip it locally under the root of the repository.\
-<sup>2</sup>This is a file containing transcriptions corresponding to each audio file.\
-<sup>3</sup>This is a dictionary for the models fine-tuned with control speakers. It can be the same as the one for the models fine-tuned without control speakers since appeared characters in the dataset are the same. However, the different ordered dictionary was used for the fine-tuning. Therefore, please use this to evaluate the models fine-tuned with control speakers.\
-<sup>4</sup>The models can be downloaded from [here](https://drive.google.com/file/d/13p8o2pmzeZTEaoTip6a0xxfgQoaoIWiI/view?usp=sharing). Please unzip it locally under the root of the repository.
+scripts
+|	inference.py
+```
+
+- The data is extracted from the [Domotica database](https://www.esat.kuleuven.be/psi/spraak/downloads/). Download the evaluation dataset from [here](https://drive.google.com/file/d/1sTwuLjvZLWidG__cZbXhPXFztZd17SUr/view?usp=sharing). Unzip it locally under the root of the repository.
+- `test.trans.txt` is a file containing transcriptions corresponding to each audio file.
+- `control.dict.ltr.txt` is a dictionary for the models fine-tuned with control speakers. It can be the same as `dict.ltr.txt`, a dictionary for the models fine-tuned without control speakers since appeared characters in the dataset are the same. However, the different ordered dictionary was used for the fine-tuning. Therefore, you need to use this to evaluate the models fine-tuned with control speakers.
+- The models can be downloaded from [here](https://drive.google.com/file/d/13p8o2pmzeZTEaoTip6a0xxfgQoaoIWiI/view?usp=sharing). Unzip it locally under the root of the repository.
+- `inference.py` is the main script for the evaluation.
 
 ## Requirements
 1. Install [Fairseq library](https://github.com/facebookresearch/fairseq). For the library installation, follow the original repo instruction.
