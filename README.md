@@ -1,5 +1,5 @@
 # ASR for Dutch Dysarthric Speech
-This is a repository presenting the outcome of my thesis for MSc. Voice Technology at the University of Groningen. **The thesis developed the Dutch dysarthric speech recognition with self-supervised learning (SSL) models, wav2vec 2.0 and XLSR-53.** To the best of the author's knowledge, this is the first attempt to apply SSL models to Dutch dysarthric speech recognition. The implementations are done using [Fariseq library](https://github.com/facebookresearch/fairseq). For more details of the research and experiments, please visit [the paper](https://drive.google.com/file/d/13VkVk38DEhn8TQHVvql1Vhi-HzlmlV9O/view?usp=sharing). With this repo, you can reproduce the evaluation experiment following the instructions below.
+This is a repository presenting the outcome of my thesis for MSc. Voice Technology at the University of Groningen. **The thesis developed the Dutch dysarthric speech recognition with self-supervised learning (SSL) models, wav2vec 2.0 and XLSR-53.** To the best of the author's knowledge, this is the first attempt to apply SSL models to Dutch dysarthric speech recognition. The implementations are done using [Fariseq library](https://github.com/facebookresearch/fairseq). For more details of the research and experiments, please visit [the paper](https://drive.google.com/file/d/1gTAvqHXdKr5UFmckCnDWkS3g3vhHrrlc/view?usp=sharing). With this repo, you can reproduce the evaluation experiment following the instructions below.
 
 #### Repo Structure:
 
@@ -167,7 +167,7 @@ Total WER: 0.15172580879651584
 The evaluation might take up to 10 minutes depending on the environment.
 
 ## Results of the Speaker-Dependent ASR
-Below is the reisults of the speaker-dependent ASR for Dutch dysarthric speech. The table presents WER for patients in different severity groups.
+Below is the results of the speaker-dependent ASR for Dutch dysarthric speech. The table presents WER for patients in different severity groups.
 
 | Model | Mild: pp17 | Moderate: pp28 | High: pp41 |
 |-------|------|-----------|------|
