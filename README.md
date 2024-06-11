@@ -59,7 +59,7 @@ scripts
 - The data is extracted from the [Domotica database](https://www.esat.kuleuven.be/psi/spraak/downloads/). Download the evaluation dataset from [here](https://drive.google.com/file/d/1sTwuLjvZLWidG__cZbXhPXFztZd17SUr/view?usp=sharing). Unzip it locally under the root of the repository.
 - `test.trans.txt` is a file containing transcriptions corresponding to each audio file.
 - `control.dict.ltr.txt` is a dictionary for the models fine-tuned with control speakers. It can be the same as `dict.ltr.txt`, a dictionary for the models fine-tuned without control speakers since appeared characters in the dataset are the same. However, the different ordered dictionary was used for the fine-tuning. Therefore, you need to use this to evaluate the models fine-tuned with control speakers.
-- The models can be downloaded from [here](https://drive.google.com/file/d/13p8o2pmzeZTEaoTip6a0xxfgQoaoIWiI/view?usp=sharing). Unzip it locally under the root of the repository.
+- The models can be downloaded from [here](https://huggingface.co/sabizushi/duth_dysarthric_speech_asr). Unzip it locally under the root of the repository.
 - `inference.py` is the main script for the evaluation.
 
 ## Requirements
